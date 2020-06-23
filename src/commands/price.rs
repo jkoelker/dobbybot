@@ -1,5 +1,7 @@
 //
 
+use super::utils;
+
 use crate::iex;
 use crate::iex::Quote;
 use crate::iex::Stock;
@@ -17,18 +19,18 @@ use std::collections::HashSet;
 
 #[command]
 async fn price(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
-    let stocks: HashSet<String>;
+    let stocks: Vec<String>;
 
     if args.is_empty() {
         let data = ctx.data.read().await;
         match data.get::<ChannelLastStocks>() {
             Some(last) => match last.get(&msg.channel_id) {
                 Some(s) => stocks = s.iter().cloned().collect(),
-                None => stocks = HashSet::new(),
+                None => stocks = Vec::new(),
             },
             None => {
                 error!("Could not get last stock cache");
-                stocks = HashSet::new();
+                stocks = Vec::new();
             }
         }
     } else {
@@ -43,14 +45,15 @@ async fn price(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
             .collect();
     }
 
+    let mut quotes: Vec<Quote> = Vec::new();
+    let mut errors: Vec<String> = Vec::new();
+
     if stocks.is_empty() {
         msg.channel_id
             .send_message(&ctx.http, |m| m.content("No symbols found"))
             .await?;
     } else {
         let data = ctx.data.read().await;
-        let mut quotes: Vec<Quote> = Vec::new();
-        let mut errors: Vec<String> = Vec::new();
 
         if let Some(client) = data.get::<IEXClient>() {
             if let Some(symbols) = iex::cache::symbols(client).await {
@@ -86,27 +89,8 @@ async fn price(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
                 .send_message(&ctx.http, |m| m.content("Command Error"))
                 .await?;
         }
-
-        if !quotes.is_empty() || !errors.is_empty() {
-            msg.channel_id
-                .send_message(&ctx.http, |m| {
-                    m.embed(|e| {
-                        for quote in quotes {
-                            e.field(
-                                format!("({}) {}", quote.symbol, quote.name),
-                                format!(":dollar: {}", quote.price),
-                                true,
-                            );
-                        }
-                        for error in errors {
-                            e.field(error, "Error fetching quote", true);
-                        }
-                        e
-                    })
-                })
-                .await?;
-        }
     }
 
+    utils::send_quotes(ctx, msg, quotes, errors).await?;
     Ok(())
 }

@@ -3,6 +3,8 @@
 use serenity::framework::{standard::macros::group, StandardFramework};
 
 mod price;
+mod utils;
+
 use price::PRICE_COMMAND;
 
 #[group]
