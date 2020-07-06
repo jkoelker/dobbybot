@@ -262,7 +262,7 @@ dependencies = [
 [[package]]
 name = "command_attr"
 version = "0.2.0"
-source = "git+https://github.com/Lakelezz/serenity?branch=await#a2e8cdedd0a42e31f83c668a80aa3a39ae0a37f3"
+source = "git+https://github.com/acdenisSK/serenity?branch=await_next#a9e60dd2af5e359b30647ed1aea8efe2f16c95a8"
 dependencies = [
  "futures",
  "proc-macro2",
@@ -1359,12 +1359,12 @@ dependencies = [
 [[package]]
 name = "serenity"
 version = "0.8.6"
-source = "git+https://github.com/Lakelezz/serenity?branch=await#a2e8cdedd0a42e31f83c668a80aa3a39ae0a37f3"
+source = "git+https://github.com/acdenisSK/serenity?branch=await_next#a9e60dd2af5e359b30647ed1aea8efe2f16c95a8"
 dependencies = [
  "async-tls",
  "async-trait",
  "async-tungstenite",
- "base64 0.11.0",
+ "base64 0.12.1",
  "bitflags",
  "bytes",
  "chrono",
@@ -1373,7 +1373,7 @@ dependencies = [
  "futures",
  "log",
  "reqwest",
- "rustls 0.16.0",
+ "rustls 0.17.0",
  "serde",
  "serde_json",
  "static_assertions",

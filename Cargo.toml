@@ -31,8 +31,8 @@ features = [
 
 [dependencies.serenity]
 version = "0.8.6"
-git = "https://github.com/Lakelezz/serenity"
-branch = "await"
+git = "https://github.com/acdenisSK/serenity"
+branch = "await_next"
 default-features = false
 features = [
     "cache",

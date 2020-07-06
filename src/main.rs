@@ -86,7 +86,8 @@ async fn my_help(
         groups,
         owners,
     )
-    .await
+    .await;
+    Ok(())
 }
 
 macro_rules! env_require {
