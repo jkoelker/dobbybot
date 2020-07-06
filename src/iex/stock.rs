@@ -5,23 +5,31 @@ use anyhow::Result;
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 
+#[serde(rename_all = "camelCase")]
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Quote {
-    pub close: f64,
-    pub change: f64,
-    #[serde(rename = "changePercent")]
-    pub change_percent: f64,
-    pub low: f64,
-    pub high: f64,
     #[serde(rename = "companyName")]
     pub name: String,
-    pub open: f64,
+    pub symbol: String,
+    pub calculation_price: String,
+
+    pub open: Option<f64>,
+    pub open_time: Option<i64>,
+    pub close: Option<f64>,
+    pub close_time: Option<i64>,
+    pub high: Option<f64>,
+    pub low: Option<f64>,
+
     #[serde(rename = "latestPrice")]
     pub price: f64,
-    pub symbol: String,
+    #[serde(rename = "latestSource")]
+    pub latest_source: String,
     #[serde(rename = "latestUpdate")]
-    pub time: i64,
-    pub volume: i64,
+    pub time: f64,
+    #[serde(rename = "latestVolume")]
+    pub volume: Option<i64>,
+    pub change: f64,
+    pub change_percent: f64,
 }
 
 #[async_trait]
