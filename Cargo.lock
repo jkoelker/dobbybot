@@ -262,7 +262,7 @@ dependencies = [
 [[package]]
 name = "command_attr"
 version = "0.2.0"
-source = "git+https://github.com/acdenisSK/serenity?branch=await_next#a9e60dd2af5e359b30647ed1aea8efe2f16c95a8"
+source = "git+https://github.com/acdenisSK/serenity?branch=await_next#9f555ec90649e7a0b19174f41a9b7d742a3d287f"
 dependencies = [
  "futures",
  "proc-macro2",
@@ -1359,7 +1359,7 @@ dependencies = [
 [[package]]
 name = "serenity"
 version = "0.8.6"
-source = "git+https://github.com/acdenisSK/serenity?branch=await_next#a9e60dd2af5e359b30647ed1aea8efe2f16c95a8"
+source = "git+https://github.com/acdenisSK/serenity?branch=await_next#9f555ec90649e7a0b19174f41a9b7d742a3d287f"
 dependencies = [
  "async-tls",
  "async-trait",
