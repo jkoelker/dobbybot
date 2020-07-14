@@ -262,7 +262,7 @@ dependencies = [
 [[package]]
 name = "command_attr"
 version = "0.2.0"
-source = "git+https://github.com/acdenisSK/serenity?branch=await_next#a9e60dd2af5e359b30647ed1aea8efe2f16c95a8"
+source = "git+https://github.com/acdenisSK/serenity?branch=await_next#ba9e93c2f08c50d910a6eaec1d9e1782fa9f8a53"
 dependencies = [
  "futures",
  "proc-macro2",
@@ -1359,7 +1359,7 @@ dependencies = [
 [[package]]
 name = "serenity"
 version = "0.8.6"
-source = "git+https://github.com/acdenisSK/serenity?branch=await_next#a9e60dd2af5e359b30647ed1aea8efe2f16c95a8"
+source = "git+https://github.com/acdenisSK/serenity?branch=await_next#ba9e93c2f08c50d910a6eaec1d9e1782fa9f8a53"
 dependencies = [
  "async-tls",
  "async-trait",
@@ -1378,6 +1378,7 @@ dependencies = [
  "serde_json",
  "static_assertions",
  "tokio",
+ "typemap_rev",
  "url",
  "uwl",
  "webpki",
@@ -1598,6 +1599,12 @@ dependencies = [
  "url",
  "utf-8",
 ]
+
+[[package]]
+name = "typemap_rev"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4227a085559b372eaf3dff1cc1dbee309189118c8d2cdfd4c964b43a1fb9cc0f"
 
 [[package]]
 name = "typenum"
